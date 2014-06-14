@@ -1,0 +1,21 @@
+<html>
+<title>Create new repository under <%=context%></title>
+<body>
+<form method=POST action="<%=context%>?external=create">
+<input type="text" name="filename" size="20" maxlength="100" value="file.h5"/>
+<br/>
+<input type="submit" value="Create"/>
+</form>
+<h3>Existing Files</h3>
+<ul>
+<%
+for f in files:
+    # List each file in turn
+%>
+<li><%=f%></li>
+<%
+# done file list
+%>
+</ul>
+</body>
+</html>

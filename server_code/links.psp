@@ -1,0 +1,10 @@
+<%
+for item in urls:
+    # Create a simple hyperlink
+    if helper != None:
+        item_url = helper.hack_complete(item)
+    else:
+        item_url = item + '?'
+    # unindent
+%>
+<a href="<%=item_url%>"><%=item%></a><br/>

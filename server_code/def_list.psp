@@ -1,0 +1,11 @@
+<dl>
+<%
+for (k,v) in entries.items():
+    # Just put the key in the term, and the value in the definition slot
+%>
+<dt><%=k%></dt>
+<dd><%=v%></dd>
+<%
+# end for loop
+%>
+</dl>

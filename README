@@ -1,0 +1,60 @@
+
+Python must be running on the server.
+
+Adapted from the classic MD eastern shore story:
+
+mrFiles
+mrNot
+OSAR
+cmnrFaces
+LIB
+mrFiles
+
+translation:
+
+Them are files
+Them are not
+Oh yes they are!
+See them interfaces?
+Well I'll be
+Them are files
+
+--
+
+All files in this directory are, unless otherwise noted
+copyright 2006, Dav Clark @ Stanford / Wandell lab
+davclark@white.stanford.edu
+
+Software may also be available under a free software license, TBD.
+
+All matlab code (hopefully) adopts the convention of prefixing any "java"
+variables with j_.  If you modify the code, please respect this convention.
+Eventually, I'd like to put java code mostly in separate files.
+
+For info on the server side / python code / apache setup, look for the
+README in the server_code directory.
+
+
+NOTES
+
+Current philosophy (somewhat due to limitations in the matlab hdf5 file
+interface)...
+
+- View properties are stored with _versions_ of a dataset.  That is, if you
+  change the color of an ROI, you create a _new_ version of that ROI with a new
+  color.  This improves our ability to specify a URI for a picture and know
+  easily which displayed thing goes with which URI.
+
+GOTCHAS
+
+Make sure the files on the repos are read/writeable by the apache user or group!
+
+CURRENT PROBLEMS
+
+matlab seems unable to modify existing entities, including metadata in an hdf5
+file.  There seems to be no way to delete.  This is annoying.
+
+matlab always reports full "path" names.  Thus, there is a recurring phenomena
+of doing a h5name(length(h5loc.Name)+2:end) thing to strip off the leading path
+
+We don't check to see if we have a pre-loaded ROI with the same name already

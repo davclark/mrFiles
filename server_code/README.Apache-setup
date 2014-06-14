@@ -1,0 +1,32 @@
+First there is standard stuff that's not so hard to install (once you know what
+to install).  You need a stock Apache 2.0 / mod_python setup (recent! I'm using
+3.2.8), and various libraries and modules: hdf5, pytables, numpy, and the
+requisite libs for them!
+
+While it's not necessary (yet), if your machine is publically acessable, you
+probably want authentication.  We're using mod_auth_pam and the even more poorly
+docuemented mod_auth_sys_group that comes with it.  In addition, we're using a
+stock mod_ssl setup.
+
+Finally, there are a number of things that should be added config-wise.  In our
+setup, they are in /etc/httpd/conf.d/ in separate files (just as they are in
+the current apache-conf subdir here).  There are alternatives, however.  For
+example, you could put them all in the main httpd.conf file.
+
+A specific note is that you should have a directory (or several) read/writable
+by apache user or group.  All files you intend to access should also have this
+property.  It would certainly be possible to make some files read-only, but they
+may not be dealt with gracefully.
+
+Note also that while I'm using the PAM apache module, mod_python includes a
+mechanism of it's own, in addition to the regular old basic authentication
+provided by Apache.  I would reccomend any of these as obvious, reasonable
+choices.
+
+index.h5:
+In the python.conf file for apache, you may also see that I've specified a
+default index file called index.h5.  This will only kick in if the file exists
+(otherwise, mod_autoindex will generate a kind of directory listing).  Also,
+index.h5 will not actually be treated as a special file, it is simply a default
+repository.  But, the suggested use is to only include external repositories,
+and store no actual data within index.h5.

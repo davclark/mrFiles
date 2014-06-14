@@ -1,0 +1,11 @@
+<select name="<%=name%>">
+<option value="">Select <%=name%></option>
+<%
+for item in choices:
+    # Put an option for each choice
+%>
+<option value="<%=item%>"><%=item%></option>
+<%
+# Drop out of loop
+%>
+</select>

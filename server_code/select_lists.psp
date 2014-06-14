@@ -1,0 +1,16 @@
+<%
+keylist = choices.keys()
+keylist.sort()
+for k in keylist:
+    #
+%>
+<select name="<%=k%>" multiple="multiple" size="5">
+<%
+    for item in choices[k]:
+        # Put an option for each choice
+%>
+<option value="<%=item%>"><%=item%></option>
+<%
+    # end item loop
+%>
+</select>

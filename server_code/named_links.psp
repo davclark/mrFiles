@@ -1,0 +1,5 @@
+<%
+for i in urls:
+    # Create a simple hyperlink
+%>
+<a href="<%=helper.complete(i)%>"><%=i%></a>

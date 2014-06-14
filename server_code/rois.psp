@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>ROI information for <%=context%></title>
+</head>
+
+
+<body>
+
+<h2><%=context%></h2>
+Navigate: 
+<a href="<%=helper.complete('..')%>">up..</a>
+<%=nav_links%>
+
+<h3>Restrict Selection</h3>
+<form method=GET action="<%=context%>">
+<%=select_lists%>
+<br/>
+<input type="text" name="search" size="20" maxlength="100"/>
+<input type="submit" value="Restrict"/>
+</form>
+
+<h3>Info</h3>
+<%=info%>
+
+<%
+if roi_links:
+    # Display roi_links
+%>
+<h3>ROIs</h3>
+<%=roi_links%>
+<%
+# end if roi_linke
+%>
+
+<%
+if external_links:
+    # Display external_links
+%>
+<h3>External Repositories</h3>
+<%=external_links%>
+<%
+# end if statement
+%>
+
+<h2>Utility</h2>
+<ul>
+<li><a href="<%=helper.add_arg('external=new')%>">Create new
+repository</a> (it will be included as an external repository in the current file)</li>
+</ul>
+<p>For the below, <strong>right click (or ctrl-click on a mac) and select "save
+link as"</strong><br/>
+For a default repository, name it
+"repository.h5", otherwise name it anything ending in ".h5"
+</p>
+<ul>
+<li><a href="<%=helper.add_arg('child=new')%>">Create new
+sub-repository</a></li>
+<li><a href="<%=helper.add_arg('export=hdf5')%>">Download these ROIs to a local
+file</a></li>
+</ul>
+
+</body>
+</html>
